@@ -93,10 +93,17 @@ let player = {
     this.yVelocity += 2;
   },
   jump: function () {
-    if (this.grounded) this.yVelocity -= 20;
+    if (this.grounded){ 
+      this.yVelocity -= 20;
+      jumpSound.play();
+    }
   },
   move: function (x) {
     this.x += x;
+    if (this.x < 0)
+      this.x = 1000;
+    if (this.x > 1000)
+      this.x = 0;
   },
   control: function () {
     if (this.y > 1000) {
@@ -390,4 +397,8 @@ function draw() {
   fill("black");
   textSize(50);
   text("score: " + score.toString(), 350, 50);
+
+  if (score >= 100){
+    text("you win", 350, 100);
+  }
 }
