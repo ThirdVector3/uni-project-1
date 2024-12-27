@@ -135,7 +135,7 @@ let player = {
     this.detectEnemies();
   },
   detectCollectables: function () {
-    let range = 20;
+    let range = 30;
     for (let i = 0; i < collectables.length; i++) {
       if (
         this.x - range < collectables[i].x &&
@@ -185,10 +185,7 @@ let player = {
 };
 
 function setup() {
-  lines = [];
-  for (let i = 0; i < 100; i++) {
-    lines.push(0);
-  }
+  generateSnow();
   generateConyouns();
   generateMountains();
   generateTrees();
@@ -204,6 +201,13 @@ async function initMusic() {
   coinSound = loadSound("money.ogg");
   await delay(1000);
   backgroundSong.play();
+}
+
+function generateSnow(){
+  lines = [];
+  for (let i = 0; i < 100; i++) {
+    lines.push(0);
+  }
 }
 
 function generateEnemies() {
